@@ -34,3 +34,29 @@ __Expected Auxiliary Space:__ O(2<sup>N</sup>).
 __Constraints:__  
 1 ≤ K ≤ N ≤ 10  
 1 ≤ a[i] ≤ 100  
+
+__Solution:__  
+```python
+class Solution:
+    def isKPartitionPossible(self, a, k):
+            a.sort()
+            target, rem = divmod(sum(a), k)
+            if rem or a[-1] > target:
+                return False
+            dp = [False] * (1 << len(a))
+            dp[0] = True
+            total = [0] * (1 << len(a))
+    
+            for num_actual in range(1 << len(a)):
+                if not dp[num_actual]:
+                    continue
+                for i, num in enumerate(a):
+                    num_futu = num_actual | (1 << i)
+                    if num_actual != num_futu and not dp[num_futu]:
+                        if (num <= target - (total[num_actual] % target)):
+                            dp[num_futu] = True
+                            total[num_futu] = total[num_actual] + num
+                        else:
+                            break
+            return dp[-1]
+```
