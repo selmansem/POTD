@@ -40,13 +40,19 @@ __Solution:__
 ```python
 class Solution:
     def minSum(self, arr, n):
-        arr.sort()
+        # Check if we have no numbers. If yes, return 0
+        if n == 0:
+            return 0
+        arr.sort() # To make sure that the smallest number is at the beginning of the array
         num_uno = ""
         num_dos = ""
+        # We will take the first number from the array, add it to the number we are building and remove it from the array. Repeat this process until the array is empty.
         while len(arr) > 0:
             num_uno = num_uno + str(min(arr))
             arr.remove(min(arr))
+            # To check if the array is already empty, we will check if the length of the array is 0. If it is, we will break the loop.
             if len(arr) == 0:
+                # If @num_dos is also empty means that we have only one number in the array. We will add a 0 to make the sum possible.
                 if len(num_dos) == 0:
                     num_dos = num_dos + str(0)
                 break
