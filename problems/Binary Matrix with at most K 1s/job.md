@@ -1,3 +1,5 @@
+[<img src="./Difficulty-Medium-yellow.svg">](#)
+
 # Binary Matrix with at most K 1s
 
 Given a binary matrix **M** with **R** rows and **C** columns, where each element of the matrix will be 0 or 1. Find the largest square that can be formed with center **(i, j)** and contains at most **K** 1’s. There are Q queries, a single query has two integers denoting the centre (i,j) of the square.  
